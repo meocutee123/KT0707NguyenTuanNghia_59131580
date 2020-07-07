@@ -1,0 +1,75 @@
+﻿@model IEnumerable<KT0707NguyenTuanNghia_59131580.Models.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<h3 class="text-center">DANH SÁCH SẢN PHẨM</h3>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenSP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DVT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DonGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.XuatXu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NhaCungCap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiSP.TenLSP)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DVT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonGia)
+        </td>
+        @if(item.XuatXu != true)
+        {
+            <td>Ngoại nhập</td>
+        }
+        else
+        {
+            <td>Trong nước</td>
+        }
+        <td>
+            @Html.DisplayFor(modelItem => item.NhaCungCap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GhiChu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiSP.TenLSP)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.MaSP }) |
+            @Html.ActionLink("Details", "Details", new { id = item.MaSP }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.MaSP })
+        </td>
+    </tr>
+}
+
+</table>
